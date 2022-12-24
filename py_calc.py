@@ -13,24 +13,39 @@ class Form(QDialog):
         self.div.clicked.connect(self.div_num)
 
     def add_num(self):
-        num1 = int(self.input1.text())
-        num2 = int(self.input2.text())
-        self.output.setText("у:"+str(num1 + num2))
+        try:
+            num1 = int(self.input1.text())
+            num2 = int(self.input2.text())
+            self.output.setText("Ответ:"+str(num1 + num2))
+        except ValueError:
+            self.output.setText("Не пиши буквы!")
 
     def sub_num(self):
-        num1 = int(self.input1.text())
-        num2 = int(self.input2.text())
-        self.output.setText("у"+str(num1 - num2))
+        try:
+            num1 = int(self.input1.text())
+            num2 = int(self.input2.text())
+            self.output.setText("Ответ"+str(num1 - num2))
+        except ValueError:
+            self.output.setText("Не пиши буквы!")
 
     def mult_num(self):
-        num1 = int(self.input1.text())
-        num2 = int(self.input2.text())
-        self.output.setText("у:"+str(num1 * num2))
+        try:
+            num1 = int(self.input1.text())
+            num2 = int(self.input2.text())
+            self.output.setText("Ответ:"+str(num1 * num2))
+        except ValueError:
+            self.output.setText("Не пиши буквы!")
 
     def div_num(self):
-        num1 = int(self.input1.text())
-        num2 = int(self.input2.text())
-        self.output.setText("у:"+str(num1 / num2))
+        try:
+            try:
+                num1 = int(self.input1.text())
+                num2 = int(self.input2.text())
+                self.output.setText("Ответ:"+str(num1 / num2))
+            except ValueError:
+                self.output.setText("Не пиши буквы!")
+        except ZeroDivisionError:
+                self.output.setText("На ноль делить нельзя!")
 
 app = QApplication(sys.argv)
 form = Form()
